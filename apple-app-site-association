@@ -1,0 +1,14 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "Z2B693HMN2.com.ironkeyestates.realflow",
+        "paths": [
+          "/auth/callback/google",
+          "/auth/callback/microsoft"
+        ]
+      }
+    ]
+  }
+}
