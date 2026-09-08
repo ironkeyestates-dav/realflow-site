@@ -6,7 +6,8 @@
         "appID": "Z2B693HMN2.com.ironkeyestates.realflow",
         "paths": [
           "/auth/callback/google",
-          "/auth/callback/microsoft"
+          "/auth/callback/microsoft",
+          "/auth/reset-password"
         ]
       }
     ]
