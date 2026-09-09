@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reset your RealFlow password</title>
+
+<!--
+  Strict CSP. Everything is same-origin: one stylesheet, one ES module.
+  The only outbound connection allowed is to the public RealFlow Supabase
+  Auth API. No inline script, no inline style, no third-party origin.
+
+  `frame-ancestors` is included but a <meta> CSP cannot enforce it — see
+  reset.js header notes and the security report: X-Frame-Options,
+  Strict-Transport-Security, X-Content-Type-Options, Referrer-Policy (as a
+  real header), Permissions-Policy and COOP/COEP all need a true HTTP
+  response header, which GitHub Pages (legacy build) cannot set. Those
+  would be added later via Cloudflare.
+-->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src https://amkjommxiricicbdgdgj.supabase.co; img-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex, nofollow">
+
+<!-- Absolute, origin-rooted URLs so they resolve identically whether the page
+     is served at /auth/reset-password or /auth/reset-password/ (GitHub Pages
+     301-redirects the former to the latter, changing the document's base). -->
+<link rel="stylesheet" href="/auth/reset-password/reset.css">
+<link rel="modulepreload" href="/auth/reset-password/reset-core.js">
+</head>
+<body>
+<main>
+  <div class="dot" aria-hidden="true"></div>
+  <h1>Reset your password</h1>
+
+  <!-- Status line: parsing / verifying / expired / error messages land here. -->
+  <p id="status" class="status" role="status" aria-live="polite">Checking your reset link&hellip;</p>
+
+  <!-- Hidden until the recovery token has been verified. -->
+  <form id="pwform" hidden autocomplete="off" novalidate>
+    <label for="pw">New password</label>
+    <input id="pw" name="pw" type="password" autocomplete="new-password"
+           autocapitalize="off" spellcheck="false" minlength="8" required>
+
+    <label for="pw2">Confirm new password</label>
+    <input id="pw2" name="pw2" type="password" autocomplete="new-password"
+           autocapitalize="off" spellcheck="false" minlength="8" required>
+
+    <p id="formError" class="error" role="alert" hidden></p>
+
+    <button id="submit" type="submit">Update password</button>
+    <p class="hint">Use at least 8 characters. Do not reuse a password from another service.</p>
+  </form>
+
+  <noscript>
+    <p class="status">This page needs JavaScript to reset your password. Open the
+    link on a device with JavaScript enabled, or open the RealFlow app and use
+    &ldquo;Forgot password?&rdquo; again.</p>
+  </noscript>
+</main>
+
+<script type="module" src="/auth/reset-password/reset.js"></script>
+</body>
+</html>

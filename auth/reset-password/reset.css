@@ -1,0 +1,107 @@
+/* Password-reset fallback page. Kept deliberately plain and consistent with
+   the rest of realflow.kiravin.com (same palette and system font stack).
+   No @import, no web fonts — the CSP allows style only from 'self'. */
+
+:root {
+  --bg: #14101E;
+  --fg: #F5F3FA;
+  --muted: #C9C2DB;
+  --faint: #9C93B3;
+  --accent: #C4B5FD;
+  --error: #F3B0A6;
+  --field-bg: #201A2E;
+  --field-border: #3A3350;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.5;
+}
+
+main {
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 72px 24px 96px;
+}
+
+.dot {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-bottom: 28px;
+}
+
+h1 {
+  font-size: 1.6rem;
+  margin: 0 0 12px;
+}
+
+.status {
+  color: var(--muted);
+  margin: 0 0 8px;
+}
+
+.status.is-error { color: var(--error); }
+.status.is-done { color: var(--fg); }
+
+form { margin-top: 24px; }
+
+label {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin: 16px 0 6px;
+}
+
+input[type="password"] {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 1rem;
+  color: var(--fg);
+  background: var(--field-bg);
+  border: 1px solid var(--field-border);
+  border-radius: 10px;
+  outline: none;
+}
+
+input[type="password"]:focus {
+  border-color: var(--accent);
+}
+
+button {
+  width: 100%;
+  margin-top: 24px;
+  padding: 13px 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--bg);
+  background: var(--accent);
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.error {
+  color: var(--error);
+  margin: 14px 0 0;
+  font-size: 0.95rem;
+}
+
+.hint {
+  color: var(--faint);
+  font-size: 0.85rem;
+  margin-top: 16px;
+}
+
+[hidden] { display: none !important; }
